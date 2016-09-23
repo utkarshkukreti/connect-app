@@ -1,82 +1,105 @@
-# Customer-App-R
+# Topcoder Connect
+###### Version 2.0.31
 
-This repository houses new Customer pages, using React, Redux, and Webpack.
+This is the official **Topcoder Connect v2** repo, our customer appcliation using React, Redux, and Webpack. Read more about [Topcoder Connect](https://www.topcoder.com/what-can-you-do/) and what we do.
 
 ## Installation
 
-We use node 5.x and npm 3.x, so you may need to download a new version of node. The easiest way is to download [nvm](https://github.com/creationix/nvm). We have a `.nvmrc` file in the root of the project, so you can just run `nvm use` to switch to the correct version of node.
+We use node 6.x and npm 3.x, make sure you have the latest version of node. The easiest way is to download [nvm](https://github.com/creationix/nvm). We have a `.nvmrc` file in the root of the project, so you can just run `nvm use` to switch to the correct version of node.
 
 Install dependencies by running the following in the root of the project:
  - `npm i`
  - **Note:** You must use npm 3. Type `npm -v` to ensure you have a 3.x version.
 
 ## NPM Commands
-- To run locally, run `npm start` and head to `http://localhost:3000/search/challenges`
+- To run locally, run `npm start` and head to `http://localhost:3000/projects/`
 - Run tests with `npm test` or use `npm run test:watch` to rerun tests after files change
 - To make sure your code passes linting: `npm run lint`
 - To create the build: `npm run build`
 
-## Contributing
 
-### Pull Requests
-
-To contribute to the repository, please create a feature branch off of the dev branch. Once you're finished working on the feature, make a pull request to merge it into dev. Please make sure that every pull request has passed the build checks, which appear just before the "Merge pull request" button in github.
-
-### Code Style
+## Code Style
 
 ***Checkout the code and comments in `src/components/ExampleComponent` for an example React component, `.scss` file, and tests.***
 
-React
+### React
+
   - Most components should be stateless and use the [functional component](https://facebook.github.io/react/blog/2015/10/07/react-v0.14.html#stateless-functional-components) pattern
   - If you need a stateful component, use [ES6 classes](http://facebook.github.io/react/docs/reusable-components.html#es6-classes)
   - Always use [PropTypes](http://facebook.github.io/react/docs/reusable-components.html#prop-validation) for all props
   - Use `classnames` for dynamic classes. See `ExampleComponent` for an example.
 
-JavaScript
+### JavaScript
+
   - Make sure your variable names are easy to understand and descriptive. No acronyms, except for common ones like `i` or `err`.
   - Use `lodash` and functional JavaScript if it makes the code clearer.
   - Please use ES2015 syntax whenever possible
   - Specific rules are enforced via `.eslintrc.json`
   - Run `npm run lint` to check your code against the linter
 
-SCSS Files
-  - This repository uses flexbox for arranging content
-  - The use of any extra CSS libraries should be discussed with the team
-  - Use SCSS syntax, but do not overly nest
-  - Use 2 spaces for indentation
-  - Use variables, mixins, and classes as much as possible from our [style guide](https://github.com/appirio-tech/styles/tree/master/styles/topcoder)
-  - To include variables from the style guide mentioned above, place `@import 'topcoder/tc-includes;'` at the top of your `.scss` file. Locally, you can look in `./node_modules/appirio-styles/styles/topcoder/_tc-colors.scss` to find many colors already defined (e.g. `#A3A3AE` => `$accent-gray`)
-  - When adding media queries, nest them inside the element, rather than creating a new section
-  ```
-  @import 'topcoder/tc-includes;'
-
-  $my-local-var: 50px;
-
-  .box {
-    height: $my-local-var;
-    width: 50px;
-    color: $medium-gray;
-    @media screen and (min-width: 768px) {
-      height: 100px;
-      width: 100px;
-      color: $dark-gray;
-    }
-
-    .inside-box {
-      font-size: 14px;
-      @media screen and (min-width: 768px) {
-        font-size: 18px;
-      }
-    }
-  }
-  ```
-
-### Writing Tests
+#### Writing Tests
 - `npm test` will run the current tests
 - `npm run test:watch` will rerun tests when files change
 - Place your test files in the same directory as the component it's testing
 - Test files should be named `ComponentName.spec.js`
 - Checkout the ExampleComponent directory in `/src/components`
+
+### SCSS
+<!--// To be revised-->
+`Architecture is under active development`
+
+  - We will use [react-css-modules](https://github.com/gajus/react-css-modules) to  style components
+  - We rely on [Stylelint](http://stylelint.io) to fix our SCSS
+  - Follow the recommendations from [SASS Guideline](https://sass-guidelin.es) which is an excellent source for SASS features
+  - This project uses flexbox for layout
+  - The use of any extra CSS libraries should be discussed with the team
+  - SCSS Formatting: Run `npm run lint-style` to check your code against Stylelint
+  - General requirements:
+	  - Use 2 spaces for indentation
+	  - Media queries should be nested inside the element
+	  - The react-css-modules is a step towards theming, which would require to use the `compose:` keyword and the global variables
+	  
+```
+.box {
+    width: 100px;
+    height: 100px;
+}
+	
+.empty {
+    composes: box;
+	
+    background: #4CAF50;
+}
+	
+.full {
+    composes: box;
+	
+    background: #F44336;
+}
+```
+	
+This can be done in SASS as:
+  
+```
+%box {
+    width: 100px;
+    height: 100px;
+}
+	
+.box-empty {
+    @extend %box;
+	
+    background: #4CAF50;
+}
+	
+.box-full {
+    @extend %box;
+	
+    background: #F44336;
+}
+```
+Read the [React Modules Documentation](https://github.com/gajus/react-css-modules#sass-scss-less-and-other-css-preprocessors)
+
 
 ## Recommended Developer Tools
 
@@ -112,3 +135,9 @@ SCSS Files
 - Configure Emmet to work with React, e.g. classes expand to `className` instead of `class`
 - Follow the instructions under [Get Emmet working](http://www.nitinh.com/2015/02/setting-sublime-text-react-jsx-development/)
   - **Note:** Add the last snippet of code to `reg_replace.sublime-settings` by navigating to  `Sublime Text -> Preferences -> Package Settings -> Reg Replace -> Settings-User`
+
+## Contributing
+
+### Pull Requests
+
+To contribute to the repository, please create a feature branch off of the dev branch. Once you're finished working on the feature, make a pull request to merge it into dev. Please make sure that every pull request has passed the build checks, which appear just before the "Merge pull request" button in github.
