@@ -3,7 +3,6 @@ import React from 'react'
 import TopBarContainer from '../TopBar/TopBarContainer'
 import Footer from '../Footer/Footer'
 import { DOMAIN } from '../../config/constants'
-import { StickyContainer } from 'react-sticky'
 import Alert from 'react-s-alert'
 
 require('./Layout.scss')
@@ -26,19 +25,19 @@ const Layout = (props) => {
     return (<div />)
   } else {
     return (
-      <StickyContainer>
+      <div>
         <TopBarContainer
           userHandle={ handle }
           userImage={ userImage }
           userName={ userName }
           domain={ DOMAIN }
         />
-      <Alert stack={{limit: 3}} html timeout={4000} offset={50} />
+        <Alert stack={{limit: 3, spacing: 30}} position="top" html timeout={4000} offset={50} />
         <div className="main-wrapper">
           { props.children }
         </div>
         <Footer domain={ DOMAIN } />
-      </StickyContainer>
+      </div>
     )
   }
 }
