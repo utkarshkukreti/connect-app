@@ -35,11 +35,27 @@ const jsxLoader = {
   exclude: /node_modules\/(?!appirio-tech.*|topcoder|tc-)/
 }
 
+// Add react-css-modules to style loader
+const styleLoader = {
+  test: /\.scss$/,
+  loaders: [
+    'style',
+    'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+    'resolve-url',
+    'sass'
+  ]
+}
+
 // Loop over loaders and replace
 config.module.loaders.forEach((loader, i, loaders) => {
   if (loader.loader === 'babel' && String(loader.test) === String(/\.(js|jsx)$/)) {
     jsxLoader.include = loader.include
     loaders[i] = jsxLoader
+  }
+
+  else if (loader.loader === 'style-loader') {
+    styleLoader.include = loader.include
+    loaders[i] = styleLoader
   }
 })
 
