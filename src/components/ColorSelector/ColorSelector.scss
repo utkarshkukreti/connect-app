@@ -2,23 +2,27 @@
 
 .colorSelector {
   text-align: center;
-  .color-card{
+
+  .color-card {
     height: 40px;
     width: 40px;
     display: inline-block;
     border: 1px solid $tc-gray-60;
     border-radius: 4px;
     margin: 0 15px;
+
     &.selected {
       border: 4px solid $tc-gray-60;
     }
   }
-  .color-card-add{
+
+  .color-card-add {
     position: relative;
     border-color: $tc-gray-30;
     background: url('../../assets/images/icon-add-color.svg') no-repeat;
     background-position: center center;
   }
+
   .picker-wrapper {
     z-index: 2;
     right: 0;
@@ -28,11 +32,14 @@
     display: flex;
     padding: 10px;
     box-shadow: rgba(0, 0, 0, 0.14902) 0px 0px 0px 1px, rgba(0, 0, 0, 0.14902) 0px 8px 16px;
+
     > div {
       box-shadow: none !important;
     }
+
     .buttons {
       width: 100px;
+
       .tc-btn {
         width: 100%;
         margin-top: 10px;

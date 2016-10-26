@@ -1,5 +1,9 @@
 {
   "extends": "stylelint-config-standard",
-  "ignoreFiles": [
-  ]
+  "rules": {
+    "length-zero-no-unit": "false",
+    "indentation": 2,
+    "declaration-empty-line-before": "false"
+  },
+  "ignoreFiles": [],
 }
