@@ -10,6 +10,7 @@ import TeamManagement from '../../../components/TeamManagement/TeamManagement'
 import { addProjectMember, updateProjectMember, removeProjectMember,
   loadMemberSuggestions
 } from '../../actions/projectMember'
+import { addTeamMemberIntent } from '../../actions/teamManagement'
 
 
 class TeamManagementContainer extends Component {
@@ -38,7 +39,8 @@ class TeamManagementContainer extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { keyword, isAddingTeamMember } = this.state
+    const { keyword } = this.state
+    const { isAddingTeamMember } = this.props
     if (isAddingTeamMember && keyword.length)
       this.updateSearchMembers(nextProps)
     if (this.state.isUserLeaving &&
@@ -53,7 +55,7 @@ class TeamManagementContainer extends Component {
   componentDidUpdate(prevProps, prevState) {
     // Trigger a resize event to make sure all <Sticky> nodes update their sizes
     // whenever isAddingTeamMember is toggled.
-    if (prevState.isAddingTeamMember !== this.state.isAddingTeamMember) {
+    if (prevProps.isAddingTeamMember !== this.props.isAddingTeamMember) {
       // We use requestAnimationFrame because this function may be executed before
       // the DOM elements are actually drawn.
       // Source: http://stackoverflow.com/a/28748160
@@ -141,7 +143,8 @@ class TeamManagementContainer extends Component {
   }
 
   onToggleAddTeamMember(isAddingTeamMember) {
-    this.setState({ isAddingTeamMember, error : null, searchMembers: [] })
+    // this.setState({ isAddingTeamMember, error : null, searchMembers: [] })
+    this.props.addTeamMemberIntent(isAddingTeamMember)
   }
 
   onToggleNewMemberConfirm(showNewMemberConfirmation) {
@@ -203,6 +206,7 @@ class TeamManagementContainer extends Component {
       <div>
         <TeamManagement
           {...this.state}
+          isAddingTeamMember={this.props.isAddingTeamMember}
           currentUser={this.props.currentUser}
           members={projectMembers}
           onKeywordChange={this.onKeywordChange}
@@ -220,7 +224,7 @@ class TeamManagementContainer extends Component {
   }
 }
 
-const mapStateToProps = ({ loadUser, members }) => {
+const mapStateToProps = ({ loadUser, members, teamManagement }) => {
   return {
     currentUser: {
       userId: parseInt(loadUser.user.id),
@@ -229,7 +233,8 @@ const mapStateToProps = ({ loadUser, members }) => {
       isCustomer: _.indexOf(loadUser.user.roles, ROLE_CONNECT_MANAGER) === -1
         && _.indexOf(loadUser.user.roles, ROLE_CONNECT_COPILOT) === -1
     },
-    allMembers: _.values(members.members)
+    allMembers: _.values(members.members),
+    isAddingTeamMember: teamManagement.isAddingTeamMember
   }
 }
 
@@ -237,7 +242,8 @@ const mapDispatchToProps = {
   addProjectMember,
   removeProjectMember,
   updateProjectMember,
-  loadMemberSuggestions
+  loadMemberSuggestions,
+  addTeamMemberIntent
 }
 
 TeamManagementContainer.propTypes = {

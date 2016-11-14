@@ -7,6 +7,7 @@ import { projectTopics } from '../projects/reducers/projectTopics'
 import navSearch from './navSearch'
 import projectSearch from '../projects/reducers/projectSearch'
 import projectSearchSuggestions from '../projects/reducers/projectSearchSuggestions'
+import {teamManagement} from '../projects/reducers/teamManagement'
 import members from './members'
 import alerts from './alerts'
 
@@ -20,5 +21,6 @@ export default combineReducers({
   members,
   projectDashboard,
   projectTopics,
+  teamManagement,
   alerts
 })
