@@ -52,7 +52,7 @@ class TeamManagementContainer extends Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     // Trigger a resize event to make sure all <Sticky> nodes update their sizes
     // whenever isAddingTeamMember is toggled.
     if (prevProps.isAddingTeamMember !== this.props.isAddingTeamMember) {

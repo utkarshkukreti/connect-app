@@ -12,9 +12,6 @@ class Dashboard extends React.Component {
     super(props)
   }
 
-  componentWillReceiveProps(nextProps) {
-  }
-
   render() {
     const {project, currentMemberRole, isAddingTeamMember} = this.props
     return (
