@@ -62,7 +62,7 @@ const MemberRow = ({ member, currentMember, onMemberDelete, onChangeOwner }) => 
       buttons.push(<ActionBtn key={2} type="user-remove" title={tooltip} onClick={onDelete} />)
     }
 
-    const canAssignOwner = isCurrentOwner || member.isManager
+    const canAssignOwner = isCurrentOwner || currentMember.isManager
     // can assign owner to customers
     if (canAssignOwner && !isOwner && member.isCustomer) {
       const onClick = (e) => onChangeOwner(member, e)
