@@ -64,7 +64,7 @@ and you'll have the repo.
 
 ## Path aliases
 
-We a added aliases to `webpack.config`. This eliminates the error-prone path escapes `../../../` and improves code readability.
+We added aliases to `webpack.config`. This eliminates the error-prone path escapes `../../../` and improves code readability.
 
 ```javascript
 alias: {
@@ -75,13 +75,11 @@ alias: {
 ```
 
 Before:
-
 ```javascript
 import {resource} from '../../config/constants'
 ```
 
 After:
-
 ```javascript
 import {resource} from 'config/constants'
 ```
