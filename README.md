@@ -75,11 +75,13 @@ alias: {
 ```
 
 Before:
+
 ```javascript
 import {resource} from '../../config/constants'
 ```
 
 After:
+
 ```javascript
 import {resource} from 'config/constants'
 ```
