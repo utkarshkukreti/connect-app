@@ -23,6 +23,7 @@
     .title {
       @include tc-heading;
       @include roboto-medium;
+
       flex: 1;
       color: $tc-black;
       white-space: nowrap;
@@ -34,7 +35,7 @@
       width: 1px;
       height: 25px;
       background-color: $tc-gray-10;
-      margin: 0px 2 * $base-unit;
+      margin: 0 2 * $base-unit;
     }
 
     .feature-actions {
@@ -57,11 +58,12 @@
   .feature-form-content {
     .feature-description {
       @include roboto;
+
       font-size: $tc-body-md;
       line-height: 5 * $base-unit;
       font-weight: 400;
       color: $tc-gray-50;
-      margin: 4 * $base-unit 0px;
+      margin: 4 * $base-unit 0;
     }
 
     .predefined-feature-form,
@@ -69,13 +71,16 @@
       .feature-notes {
         label {
           @include tc-label-md;
+
           color: $tc-gray-70;
         }
 
         textarea {
           height: 100px;
           overflow: auto;
+
           @include tc-label-lg;
+
           color: $tc-black;
         }
       }
@@ -85,12 +90,15 @@
       .feature-description {
         label {
           @include tc-label-md;
+
           color: $tc-gray-70;
         }
 
         textarea {
           height: 100px;
+
           @include tc-label-lg;
+
           color: $tc-black;
         }
       }

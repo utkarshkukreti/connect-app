@@ -8,7 +8,9 @@
 
   p {
     margin-bottom: 50px;
+
     @include tc-heading-large;
+
     font-weight: 300;
   }
 
@@ -24,7 +26,7 @@
 
   &.no-results-appear-active {
     opacity: 1;
-    transition: opacity .25s ease-in;
+    transition: opacity 0.25s ease-in;
   }
 }
 

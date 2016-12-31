@@ -10,14 +10,13 @@
 }
 
 .project-creation-dialog-overlay {
-  background-color: rgba(235, 235, 235, .94) !important;
+  background-color: rgba(235, 235, 235, 0.94) !important;
 }
 
 .content {
-
   .container {
     position: relative;
-    margin: 0px auto 20px;
+    margin: 0 auto 20px;
     width: 920px;
     padding: 20px 20px 50px;
     border-radius: 4px;
@@ -25,7 +24,7 @@
 
     &.container-margin {
       margin: 50px auto;
-      box-shadow: 0px 0px 14px 1px rgba(38, 38, 40, 0.15);
+      box-shadow: 0 0 14px 1px rgba(38, 38, 40, 0.15);
     }
 
     .btn-close {
@@ -39,10 +38,11 @@
 
     h2 {
       @include roboto-light;
+
       color: $tc-gray-60;
       font-size: $tc-heading-lg;
       text-align: center;
-      margin: 0 0 50px 0;
+      margin: 0 0 50px;
 
       &.project-info__title--device {
         margin-bottom: 30px;
@@ -59,7 +59,9 @@
         span {
           width: 33.3%;
           cursor: pointer;
+
           @include roboto-light;
+
           font-size: 12px;
           line-height: 20px;
           color: $tc-gray-50;
@@ -79,7 +81,7 @@
           cursor: pointer;
           position: relative;
 
-          &:before {
+          &::before {
             content: '';
             display: block;
             position: absolute;
@@ -93,7 +95,7 @@
           }
 
           &.active {
-            &:before {
+            &::before {
               display: none;
             }
 
@@ -107,6 +109,7 @@
           h3,
           p {
             @include roboto-light;
+
             color: $tc-gray-50;
             line-height: 25px;
             text-align: center;
@@ -128,7 +131,7 @@
     }
 
     .pick-target-devices {
-      padding: 0px 50px;
+      padding: 0 50px;
 
       .target-selectors {
         display: flex;
@@ -139,18 +142,19 @@
         // FIXME: Refactor to use proper calculation of the ":after" box position
         .divider {
           @include roboto-light;
+
           position: relative;
           width: 20px;
           height: 155px;
 
-          &:before,
-          &:after {
+          &::before,
+          &::after {
             display: block;
             position: absolute;
             left: 50%;
           }
 
-          &:before {
+          &::before {
             content: '';
             width: 1px;
             height: 80%;
@@ -158,12 +162,11 @@
             top: 10%;
           }
 
-          &:after {
+          &::after {
             content: 'Or';
             font-style: italic;
             color: $tc-gray-40;
             font-size: 12px;
-            line-height: 20px;
             top: 50%;
             margin: -15px 0 0 -10px;
             text-align: center;
@@ -201,13 +204,15 @@
             span.icon {
               display: block;
               height: 50px;
-              margin: 30px auto 20px auto;
+              margin: 30px auto 20px;
             }
 
             span.title {
               display: block;
               margin-top: 20px;
+
               @include roboto-bold;
+
               color: $tc-gray-90;
               font-size: 13px;
               text-align: center;
@@ -218,7 +223,9 @@
               font-size: 11px;
               text-align: center;
               color: $tc-gray-50;
+
               @include roboto;
+
               margin-top: 10px;
             }
 
@@ -321,7 +328,9 @@
         display: block;
         margin-bottom: 5px;
         text-transform: none;
+
         @include tc-label-md;
+
         color: $tc-gray-70;
         font-size: 13px;
       }
@@ -329,8 +338,9 @@
       .error-message {
         display: block;
         margin: 5px 0;
+
         @include roboto;
-        color: $tc-gray-70;
+
         font-size: 13px;
         line-height: 20px;
         font-style: italic;
@@ -348,6 +358,7 @@
       input,
       textarea {
         @include tc-label-md;
+
         display: block;
         color: $tc-black;
         background: $tc-gray-neutral-light;
@@ -370,7 +381,7 @@
         &:focus {
           background: $tc-white;
           border-color: $tc-dark-blue-70;
-          box-shadow: 0px 0px 2px 1px $tc-dark-blue-30;
+          box-shadow: 0 0 2px 1px $tc-dark-blue-30;
         }
 
         &.error {
@@ -383,7 +394,7 @@
             background: $tc-white;
             border-color: $tc-dark-blue-70;
             border-left: 1px solid $tc-dark-blue-70 !important;
-            box-shadow: 0px 0px 2px 1px $tc-dark-blue-30;
+            box-shadow: 0 0 2px 1px $tc-dark-blue-30;
           }
         }
       }
@@ -407,6 +418,7 @@
     .button-area {
       display: flex;
       justify-content: center;
+
       /* background: url('../../../assets/images/check-orange.svg') no-repeat; */
       a {
         height: 40px;
@@ -430,7 +442,7 @@
     .generic-project-form {
       width: 100%;
       max-width: 600px;
-      margin: 50px auto 0px auto;
+      margin: 50px auto 0;
 
       .row {
         margin-bottom: 20px;
@@ -459,7 +471,7 @@
 
           input {
             width: 100px;
-            margin: 0px;
+            margin: 0;
           }
         }
       }
@@ -535,7 +547,6 @@ $track-color: $tc-gray-neutral-dark;
       height: 4px;
     }
 
-
     // Firefox styles
     &::-moz-range-track {
       width: $track-width;
@@ -594,6 +605,7 @@ $track-color: $tc-gray-neutral-dark;
       background-color: $tc-gray-neutral-dark;
     }
 
+    /* stylelint-disable-next-line selector-pseudo-element-no-unknown */
     &::ms-tooltip {
       display: block;
       padding: 30px;

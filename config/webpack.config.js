@@ -143,11 +143,21 @@ config.module = {
       test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
       loader: 'file'
     }, {
-      test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      test: /\.(ttf|eot)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+      loader: 'file'
+    }, {
+      test: f => {
+        // all .svg except .inline.svg and src/assets/icons/*.svg
+        return /\.svg$/.test(f) && !(/\.inline\.svg$/.test(f)) && !(/\/src\/assets\/icons\/.*svg$/.test(f))
+      },
       loader: 'file'
     }, {
       test: /\.(coffee|litcoffee|cjsx)$/,
       loader: 'babel?presets[]=react,presets[]=es2015,presets[]=stage-2,plugins[]=lodash!coffee!cjsx'
+    }, {
+      // all *.inline.svg and src/assets/icons/*.svg
+      test: /(src\/assets\/icons\/.*|\.inline)\.svg$/,
+      loader: 'babel!svg-react'
     }
   ],
   postLoaders: [
@@ -165,7 +175,8 @@ config.resolve = {
   alias: {
     config: path.join(dirname, './src/config'),
     actions: path.join(dirname, './src/actions'),
-    components: path.join(dirname, './src/components')
+    components: path.join(dirname, './src/components'),
+    icons: path.join(dirname, './src/assets/icons')
   },
   modulesDirectories: ['node_modules'],
   extensions: ['', '.js', '.jsx', '.json', '.scss', '.svg', '.png', '.gif', '.jpg', '.coffee', '.cjsx']

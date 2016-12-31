@@ -11,8 +11,8 @@ button {
     border: none;
     padding: 0;
     margin: 0;
-    font-size: inherit;
     font: inherit;
+    font-size: inherit;
     line-height: inherit;
     font-weight: inherit;
     text-transform: inherit;
@@ -79,12 +79,13 @@ button {
           .custom-feature-btn-desc {
             @include roboto;
             @include tc-label-md;
+
             color: $tc-gray-50;
             padding: 2 * $base-unit 4 * $base-unit;
           }
 
           button {
-            margin: 4 * $base-unit 0px;
+            margin: 4 * $base-unit 0;
           }
         }
       }
@@ -111,6 +112,7 @@ button {
       width: 100%;
       position: relative;
     }
+
     .feature-form-instructions {
       padding: 8 * $base-unit;
 
@@ -120,6 +122,7 @@ button {
 
       p {
         @include tc-label-md;
+
         color: $tc-gray-50;
       }
     }

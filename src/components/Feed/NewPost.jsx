@@ -3,12 +3,14 @@ import {Editor, EditorState, RichUtils} from 'draft-js'
 import {stateToMarkdown} from 'draft-js-export-markdown'
 import cn from 'classnames'
 import './draftjs.scss'
-import { Avatar } from 'appirio-tech-react-components'
+import Avatar from '../Avatar/Avatar'
+import BoldSVG from '../../assets/images/tc-text-16-bold.inline.svg'
+import ItalicSVG from '../../assets/images/tc-text-16-italic.inline.svg'
 
 const styles = [
-  {className: 'bold', style: 'BOLD'},
-  {className: 'italic', style: 'ITALIC'}
-  // {className: 'underline', style: 'UNDERLINE'}
+  {className: 'bold', style: 'BOLD', svg: BoldSVG},
+  {className: 'italic', style: 'ITALIC', svg: ItalicSVG}
+  // {className: 'underline', style: 'UNDERLINE', svg: UnderlineSVG}
 ]
 
 const blocks = [
@@ -227,7 +229,7 @@ class NewPost extends React.Component {
                         this.toggleInlineStyle(item.style)
                         e.preventDefault()
                       }}
-                    />)}
+                    ><item.svg/></button>)}
                   <div className="separator"/>
                   {/* TODO use Icon components */}
                   {blocks.map((item) =>
