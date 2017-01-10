@@ -4,10 +4,12 @@ import React, {Component, PropTypes} from 'react'
 import ReactDOM from 'react-dom'
 import SearchSuggestions from '../SearchSuggestions/SearchSuggestions'
 import Loader from '../Loader/Loader'
-import classNames from 'classnames'
+import { themr } from 'react-css-themr'
+import css from './SearchBar.m.scss'
 
 //states: empty, filled, focused
 
+@themr('MySearchBar', css)
 class SearchBar extends Component {
   constructor(props) {
     super(props)
@@ -179,6 +181,7 @@ class SearchBar extends Component {
   }
 
   render() {
+    const theme = this.props.theme
     const recentList = this.props.recentTerms
     const popularList = this.state.suggestions
 
@@ -199,24 +202,18 @@ class SearchBar extends Component {
       typeaheadText = ''
     }
 
-    const sbClasses = classNames('SearchBar', {
-      'state-empty' : searchState === 'empty',
-      'state-focused': searchState === 'focused',
-      'state-filled' : searchState === 'filled'
-    })
-
     const results = this.state.loading === true
-      ? <div className="loading-suggestions"><Loader /></div>
+      ? <Loader />
       : <SearchSuggestions hideSuggestionsWhenEmpty={ this.props.hideSuggestionsWhenEmpty } recentSearch={ recentList } searchTerm={ this.state.searchValue } popularSearch={ popularList } showPopularSearchHeader={ this.props.showPopularSearchHeader } onSuggestionSelect={ this.handleSuggestionSelect } />
     return (
-      <div className={ sbClasses }>
-        <span className="search-typeahead-text">{ typeaheadText }</span>
-        <input className="search-bar__text" onFocus={ this.onFocus } onChange={ this.onChange } onKeyUp={ this.onKeyUp } ref="searchValue" value={this.state.searchValue} />
-        <img className="search-bar__clear" src={ require('./x-mark.svg') } onClick={ this.clearSearch }/>
-        <div className="search-icon-wrap" onClick={ this.handleClick }>
-          <span className="search-txt">Search</span>
+      <div className={theme[searchState]}>
+        <span className={theme['typeahead-text']}>{ typeaheadText }</span>
+        <input className={theme.text} onFocus={ this.onFocus } onChange={ this.onChange } onKeyUp={ this.onKeyUp } ref="searchValue" value={this.state.searchValue} />
+        <img className={theme.clear} src={ require('./x-mark.svg') } onClick={ this.clearSearch }/>
+        <div className={theme['search-icon-wrap']} onClick={ this.handleClick }>
+          <span className={theme.txt}>Search</span>
         </div>
-        <div className="suggestions-panel">
+        <div className={theme['suggestions-panel']}>
           {results}
         </div>
       </div>
