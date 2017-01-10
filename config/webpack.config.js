@@ -101,7 +101,7 @@ config.module = {
         'react-hot',
         'babel?' + JSON.stringify({
           presets: [ 'es2015', 'react', 'stage-0' ],
-          plugins: [ 'lodash' ]
+          plugins: [ 'lodash', 'transform-decorators-legacy' ]
         })
       ],
       exclude: /node_modules\/(?!appirio-tech.*|topcoder|tc-)/
